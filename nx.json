@@ -34,6 +34,9 @@
       "tags": [],
       "implicitDependencies": ["delivery-parcel-printer"]
     },
+    "orders": {
+      "tags": []
+    },
     "users": {
       "tags": []
     }

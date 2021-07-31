@@ -15,8 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@brainless-development/orders": ["libs/orders/src/index.ts"],
       "@brainless-development/users": ["libs/users/src/index.ts"]
-    }
+    },
+    "strictPropertyInitialization": false
   },
   "exclude": ["node_modules", "tmp"]
 }
