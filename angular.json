@@ -1,0 +1,157 @@
+{
+  "version": 1,
+  "projects": {
+    "delivery-parcel-printer": {
+      "projectType": "application",
+      "root": "apps/delivery-parcel-printer",
+      "sourceRoot": "apps/delivery-parcel-printer/src",
+      "prefix": "brainless-development",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/delivery-parcel-printer",
+            "index": "apps/delivery-parcel-printer/src/index.html",
+            "main": "apps/delivery-parcel-printer/src/main.ts",
+            "polyfills": "apps/delivery-parcel-printer/src/polyfills.ts",
+            "tsConfig": "apps/delivery-parcel-printer/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/delivery-parcel-printer/src/favicon.ico",
+              "apps/delivery-parcel-printer/src/assets"
+            ],
+            "styles": ["apps/delivery-parcel-printer/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/delivery-parcel-printer/src/environments/environment.ts",
+                  "with": "apps/delivery-parcel-printer/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "delivery-parcel-printer:build:production"
+            },
+            "development": {
+              "browserTarget": "delivery-parcel-printer:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "delivery-parcel-printer:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/delivery-parcel-printer/src/**/*.ts",
+              "apps/delivery-parcel-printer/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/delivery-parcel-printer"],
+          "options": {
+            "jestConfig": "apps/delivery-parcel-printer/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "delivery-parcel-printer-e2e": {
+      "root": "apps/delivery-parcel-printer-e2e",
+      "sourceRoot": "apps/delivery-parcel-printer-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/delivery-parcel-printer-e2e/cypress.json",
+            "tsConfig": "apps/delivery-parcel-printer-e2e/tsconfig.e2e.json",
+            "devServerTarget": "delivery-parcel-printer:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "delivery-parcel-printer:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/delivery-parcel-printer-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "delivery-parcel-printer"
+}
