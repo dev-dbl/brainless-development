@@ -33,6 +33,9 @@
     "delivery-parcel-printer-e2e": {
       "tags": [],
       "implicitDependencies": ["delivery-parcel-printer"]
+    },
+    "users": {
+      "tags": []
     }
   }
 }
