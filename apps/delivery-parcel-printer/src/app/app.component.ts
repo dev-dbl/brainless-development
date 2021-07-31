@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'brainless-development-root',
+  selector: 'dpp-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })

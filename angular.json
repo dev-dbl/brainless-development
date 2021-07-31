@@ -5,7 +5,7 @@
       "projectType": "application",
       "root": "apps/delivery-parcel-printer",
       "sourceRoot": "apps/delivery-parcel-printer/src",
-      "prefix": "brainless-development",
+      "prefix": "dpp",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
