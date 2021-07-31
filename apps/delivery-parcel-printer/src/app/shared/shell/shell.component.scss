@@ -1,0 +1,113 @@
+$sidebar_width: 55px;
+$sidebar_width_hover: 150px;
+
+.dpp {
+    &-sidebar {
+      background-color: var(--surface-800);
+      position: fixed;
+      height: 100%;
+      width: $sidebar_width;
+      overflow: hidden;
+      transition: width 0.5s;
+      left: 0;
+      top: 0;
+
+      &:hover {
+        width: $sidebar_width_hover;
+        .links {
+          .link-name {
+            display: block;
+          }
+        }
+      }
+
+      .links {
+        .link-name {
+          white-space: nowrap;
+          display: none;
+          font-size: 20px;
+        }
+
+        ul {
+          margin: 0;
+          padding: 0;
+
+          li {
+            display: flex;
+            list-style: none;
+            width: 100%;
+            align-items: center;
+
+            a {
+              color: var(--primary-color-text);
+              padding: 20px 15px;
+              display: block;
+              text-decoration: none;
+              width: 100%;
+
+              &:hover {
+                background-color: var(--blue-700);
+              }
+
+              i {
+                margin-right: 8px;
+                margin-top: 0;
+                float: left;
+                font-size: 24px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    //&-sidebar:hover {
+    //  width: $sidebar_width_hover;
+    //  .links {
+    //    .link-name {
+    //      display: block;
+    //    }
+    //  }
+    //}
+
+    &-shell {
+      width: calc(100% - #{$sidebar_width});
+      margin-left: $sidebar_width;
+    }
+}
+
+
+
+
+//.dpp {
+//  &-wrapper {
+//    height: 100%;
+//    padding: 0;
+//    margin: 0;
+//  }
+//
+//  &-sidebar {
+//    position: fixed;
+//    width: 50px;
+//    background-color: var(--surface-800);
+//    height: 100%;
+//    top: 0;
+//  }
+//
+//  &-shell {
+//    width: calc(100% - 50px);
+//    margin-left: 50px;
+//    padding: 15px;
+//  }
+//}
+//
+//@media screen and (min-width: 800px) {
+//  .dpp-sidebar {
+//    width: 150px;
+//  }
+//
+//  .dpp-shell {
+//    width: calc(100% - 150px);
+//    margin-left: 150px;
+//  }
+//}
