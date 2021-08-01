@@ -1,0 +1,71 @@
+<div class="dpp-orders-list">
+  <p-card header="Bestellungen" subheader="Liste der Bestellungen">
+    <div class="p-grid">
+      <!--      <div class="p-col-12">-->
+      <!--        <p-toolbar>-->
+      <!--          <div class="p-toolbar-group-left">-->
+      <!--            <button pButton pRipple type="button" label="Neu" icon="pi pi-plus"-->
+      <!--                    class="p-button-rounded p-button-success"-->
+      <!--                    routerLink="form"></button>-->
+      <!--          </div>-->
+      <!--        </p-toolbar>-->
+      <!--      </div>-->
+
+      <div class="p-col-12">
+        <p-table id="orders-table" [value]="orders">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>#</th>
+              <th>Bestellnr.</th>
+              <th>Datum1</th>
+              <th>Datum2</th>
+              <th>Käufer</th>
+              <th>Summe</th>
+              <th>Item</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+          </ng-template>
+
+          <ng-template pTemplate="body" let-order>
+            <tr>
+              <td>{{order.id}}</td>
+              <td>{{order.orderIdentifier}}</td>
+              <td>{{order.orderDate | date: 'dd.MM.yyyy'}}</td>
+              <td>date2</td>
+              <td>Buyer</td>
+              <td>{{order.amount | currency}}</td>
+              <td>OrderItem</td>
+              <td>
+                <div class="p-d-flex p-jc-end">
+                  Status
+                </div>
+              </td>
+              <td>
+                <!--                <div class="p-d-flex p-jc-end">-->
+                <!--                  <div style="position: relative">-->
+                <!--                    <button pButton pRipple type="button" label="" icon="pi pi-users"-->
+                <!--                            class="p-button-rounded p-button-primary p-mr-1"-->
+                <!--                            [routerLink]="'registrations/' + camp.id"></button>-->
+                <!--                    <div style="position: absolute; top: -10px; right: 0;">-->
+                <!--                      <p-badge [value]="openRegistrationsCount.get(camp) + ''" severity="danger"></p-badge>-->
+                <!--                    </div>-->
+                <!--                  </div>-->
+                <!--                  <button pButton pRipple type="button" label="" icon="pi pi-pencil"-->
+                <!--                          class="p-button-rounded p-button-warning p-mr-1"-->
+                <!--                          (click)="editCamp(camp)"></button>-->
+                <!--                  <button pButton pRipple type="button" label="" icon="pi pi-trash"-->
+                <!--                          class="p-button-rounded p-button-danger"-->
+                <!--                          (click)="deleteCamp(camp)"></button>-->
+                <!--                </div>-->
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </p-card>
+</div>
+
+<!--<p-confirmDialog [style]="{width: '100vw'}" [baseZIndex]="10000"-->
+<!--                 rejectButtonStyleClass="p-button-text"></p-confirmDialog>-->

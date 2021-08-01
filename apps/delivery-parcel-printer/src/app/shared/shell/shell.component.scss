@@ -8,6 +8,7 @@ $sidebar_width_hover: 150px;
       height: 100%;
       width: $sidebar_width;
       overflow: hidden;
+      z-index: 9999;
       transition: width 0.5s;
       left: 0;
       top: 0;

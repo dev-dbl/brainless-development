@@ -12,7 +12,9 @@
         "no-empty-function": "off",
         "@typescript-eslint/no-empty-function": "off",
         "no-empty-lifecycle-method": "off",
-        "@angular-eslint/no-empty-lifecycle-method": "off"}
+        "@angular-eslint/no-empty-lifecycle-method": "off",
+        "@typescript-eslint/ban-ts-comment": "off"
+      }
     },
     {
       "files": ["*.js", "*.jsx"],
