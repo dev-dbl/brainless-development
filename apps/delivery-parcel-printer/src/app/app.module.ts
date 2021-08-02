@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, NgModule } from "@angular/core";
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -12,19 +12,34 @@ import { OrdersModule } from "@brainless-development/orders";
 import { OrdersListComponent } from './pages/orders/orders-list/orders-list.component';
 import { CardModule } from "primeng/card";
 import { TableModule } from "primeng/table";
+import { TagModule } from "primeng/tag";
+import { ToolbarModule } from "primeng/toolbar";
+import { ButtonModule } from "primeng/button";
+import { RippleModule } from "primeng/ripple";
+import { DropdownModule } from "primeng/dropdown";
+import { FormsModule } from "@angular/forms";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [AppComponent, ShellComponent, DashboardComponent, OrdersListComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     RouterModule,
     AppRoutingModule,
     UsersModule,
     OrdersModule,
     CardModule,
-    TableModule
+    TableModule,
+    TagModule,
+    ToolbarModule,
+    ButtonModule,
+    RippleModule,
+    DropdownModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR' }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

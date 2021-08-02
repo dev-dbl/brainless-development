@@ -62,53 +62,9 @@ $sidebar_width_hover: 150px;
       }
     }
 
-    //&-sidebar:hover {
-    //  width: $sidebar_width_hover;
-    //  .links {
-    //    .link-name {
-    //      display: block;
-    //    }
-    //  }
-    //}
-
     &-shell {
       width: calc(100% - #{$sidebar_width});
       margin-left: $sidebar_width;
+      padding: 15px;
     }
 }
-
-
-
-
-//.dpp {
-//  &-wrapper {
-//    height: 100%;
-//    padding: 0;
-//    margin: 0;
-//  }
-//
-//  &-sidebar {
-//    position: fixed;
-//    width: 50px;
-//    background-color: var(--surface-800);
-//    height: 100%;
-//    top: 0;
-//  }
-//
-//  &-shell {
-//    width: calc(100% - 50px);
-//    margin-left: 50px;
-//    padding: 15px;
-//  }
-//}
-//
-//@media screen and (min-width: 800px) {
-//  .dpp-sidebar {
-//    width: 150px;
-//  }
-//
-//  .dpp-shell {
-//    width: calc(100% - 150px);
-//    margin-left: 150px;
-//  }
-//}
