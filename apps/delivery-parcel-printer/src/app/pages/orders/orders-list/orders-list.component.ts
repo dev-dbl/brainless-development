@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Order, OrdersService } from "@brainless-development/orders";
 import { Subscription } from "rxjs";
 import { ORDER_STATUS } from "../../../../../../../libs/orders/src/lib/models/order.constants";
+import { NavigationExtras, Router } from "@angular/router";
 
 @Component({
   selector: 'dpp-orders-list',
@@ -18,7 +19,7 @@ export class OrdersListComponent implements OnInit, OnDestroy {
   orderStates: any[];
   selectedOrders: Order[] = [];
 
-  constructor(private ordersService: OrdersService) {
+  constructor(private router: Router, private ordersService: OrdersService) {
     this.orderStates = [];
     for (const key in this.orderStatus) {
       this.orderStates.push(key);
@@ -47,5 +48,14 @@ export class OrdersListComponent implements OnInit, OnDestroy {
     this.subs.add(this.ordersService.updateOrderStatus(this.selectedOrders).subscribe((res: Order[]) => {
       this.selectedOrders = res;
     }));
+  }
+
+  navigatePrint(): void {
+    const queryParams: any = {};
+    queryParams.orderIds = JSON.stringify(this.selectedOrders.map(o => o.id));
+    const navigationExtras: NavigationExtras = {
+      queryParams
+    };
+    this.router.navigate([`orders/print`], navigationExtras);
   }
 }

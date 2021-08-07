@@ -1,0 +1,63 @@
+<div class="dpp-orders-print">
+  <p-card header="Versandlabels" subheader="Labels drucken">
+    <div class="p-grid">
+      <div class="p-col-12">
+        <p-toolbar>
+          <div class="p-toolbar-group-left">
+            <button pButton pRipple type="button" label="Drucken" icon="pi pi-print"
+                    class="p-button-rounded"
+                    (click)="printLabels()"></button>
+          </div>
+        </p-toolbar>
+      </div>
+
+      <div class="p-col-12">
+        <p-table id="orders-print-table" [value]="orders"
+                 class="p-datatable-striped" [rowHover]="true">
+          <ng-template pTemplate="header">
+            <tr>
+              <th pSortableColumn="orderIdentifier">Bestellnr. <p-sortIcon field="orderIdentifier"></p-sortIcon></th>
+              <th pSortableColumn="orderDate">Datum1 <p-sortIcon field="orderDate"></p-sortIcon></th>
+              <!--              <th>Datum2</th>-->
+              <th>Käufer</th>
+              <th pSortableColumn="amount">Summe <p-sortIcon field="amount"></p-sortIcon></th>
+              <th>Details</th>
+              <th></th>
+            </tr>
+          </ng-template>
+
+          <ng-template pTemplate="body" let-order>
+            <tr>
+              <td>{{order.orderIdentifier}}</td>
+              <td>{{order.orderDate | date: 'dd.MM.yyyy'}}</td>
+              <!--              <td>date2</td>-->
+              <td>Buyer</td>
+              <td>{{order.amount | currency}}</td>
+              <td>
+                <div class="p-fluid">
+                  <div class="p-field">
+                    <label for="weight">Gewicht</label>
+                    <p-inputNumber id="weight" inputId="weight" class="p-inputtext-sm"
+                                   [(ngModel)]="weight"
+                                   mode="decimal" [minFractionDigits]="2" [min]="0"
+                                   suffix=" kg"></p-inputNumber>
+                  </div>
+<!--                  <div class="p-field">-->
+<!--                    <label for="shipping-product">Versandprodukt</label>-->
+<!--                    <input id="shipping-product" type="text" pInputText class="p-inputtext-sm">-->
+<!--                  </div>-->
+                  <div class="p-field">
+                    <label for="packing">Verpackung</label>
+                    <input id="packing" type="text" pInputText class="p-inputtext-sm">
+                  </div>
+                </div>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </p-card>
+</div>

@@ -19,9 +19,12 @@ import { RippleModule } from "primeng/ripple";
 import { DropdownModule } from "primeng/dropdown";
 import { FormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { OrdersPrintComponent } from './pages/orders/orders-print/orders-print.component';
+import { InputTextModule } from "primeng/inputtext";
+import { InputNumberModule } from "primeng/inputnumber";
 
 @NgModule({
-  declarations: [AppComponent, ShellComponent, DashboardComponent, OrdersListComponent],
+  declarations: [AppComponent, ShellComponent, DashboardComponent, OrdersListComponent, OrdersPrintComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -36,7 +39,9 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     ButtonModule,
     RippleModule,
     DropdownModule,
-    FormsModule
+    FormsModule,
+    InputTextModule,
+    InputNumberModule
   ],
   providers: [
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR' }],

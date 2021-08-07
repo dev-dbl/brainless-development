@@ -11,12 +11,18 @@
                           class="p-button-rounded p-button-help"
                           (click)="changeStatus()"
                           [disabled]="!selectedOrders || !selectedOrders.length"></button>
+                  <button pButton pRipple type="button" label="Versandlabel erstellen" icon="pi pi-plus"
+                          class="p-button-rounded p-button-success"
+                          (click)="navigatePrint()"
+                          [disabled]="!selectedOrders || !selectedOrders.length || selectedOrders[0].status !== 1"></button>
                 </div>
               </p-toolbar>
             </div>
 
       <div class="p-col-12">
-        <p-table id="orders-table" [value]="orders" [(selection)]="selectedOrders" [rowHover]="true" dataKey="id">
+        <p-table id="orders-table" [value]="orders"
+                 [(selection)]="selectedOrders" dataKey="id"
+                 class="p-datatable-striped" [rowHover]="true">
           <ng-template pTemplate="header">
             <tr>
 <!--              <th style="width: 50px">#</th>-->
