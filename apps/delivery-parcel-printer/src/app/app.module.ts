@@ -22,6 +22,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { OrdersPrintComponent } from './pages/orders/orders-print/orders-print.component';
 import { InputTextModule } from "primeng/inputtext";
 import { InputNumberModule } from "primeng/inputnumber";
+import { FieldsetModule } from "primeng/fieldset";
 
 @NgModule({
   declarations: [AppComponent, ShellComponent, DashboardComponent, OrdersListComponent, OrdersPrintComponent],
@@ -41,7 +42,8 @@ import { InputNumberModule } from "primeng/inputnumber";
     DropdownModule,
     FormsModule,
     InputTextModule,
-    InputNumberModule
+    InputNumberModule,
+    FieldsetModule
   ],
   providers: [
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR' }],

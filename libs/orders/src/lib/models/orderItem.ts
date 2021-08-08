@@ -1,6 +1,6 @@
 export class OrderItem {
   id: string;
   name?: string;
-  amount: number;
+  quantity: number;
   image: string;
 }

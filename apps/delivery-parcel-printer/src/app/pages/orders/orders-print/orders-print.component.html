@@ -19,7 +19,7 @@
               <th pSortableColumn="orderIdentifier">Bestellnr. <p-sortIcon field="orderIdentifier"></p-sortIcon></th>
               <th pSortableColumn="orderDate">Datum1 <p-sortIcon field="orderDate"></p-sortIcon></th>
               <!--              <th>Datum2</th>-->
-              <th>Käufer</th>
+              <th>Adresse</th>
               <th pSortableColumn="amount">Summe <p-sortIcon field="amount"></p-sortIcon></th>
               <th>Details</th>
               <th></th>
@@ -31,15 +31,39 @@
               <td>{{order.orderIdentifier}}</td>
               <td>{{order.orderDate | date: 'dd.MM.yyyy'}}</td>
               <!--              <td>date2</td>-->
-              <td>Buyer</td>
+              <td>
+                <div class="p-text-left">
+                  <div *ngIf="order.address">{{order.address}}</div>
+                  <div *ngIf="order.orderAddress">
+                    <div *ngIf="order.orderAddress.name">{{order.orderAddress.name}}</div>
+                    <div>
+                      <span *ngIf="order.orderAddress.addressLine1">{{order.orderAddress.addressLine1}}</span>
+                      <span *ngIf="order.orderAddress.addressLine2">, {{order.orderAddress.addressLine2}}</span>
+                      <span *ngIf="order.orderAddress.addressLine3">, {{order.orderAddress.addressLine3}}</span>
+                    </div>
+                    <div>
+                      <span *ngIf="order.orderAddress.postalCode">{{order.orderAddress.postalCode}}, </span>
+                      <span *ngIf="order.orderAddress.city">{{order.orderAddress.city}}</span>
+                      <span *ngIf="order.orderAddress.district">, {{order.orderAddress.district}}</span>
+                      <span *ngIf="order.orderAddress.stateOrRegion">, {{order.orderAddress.stateOrRegion}}</span>
+                    </div>
+                    <div>
+                      <span *ngIf="order.orderAddress.county">{{order.orderAddress.county}}</span>
+                      <span *ngIf="order.orderAddress.countryCode">, {{order.orderAddress.countryCode}}</span>
+                    </div>
+                    <div *ngIf="order.orderAddress.phone">{{order.orderAddress.phone}}</div>
+                  </div>
+                </div>
+              </td>
               <td>{{order.amount | currency}}</td>
               <td>
                 <div class="p-fluid">
                   <div class="p-field">
-                    <label for="weight">Gewicht</label>
+<!--                    <label for="weight">Gewicht</label>-->
                     <p-inputNumber id="weight" inputId="weight" class="p-inputtext-sm"
-                                   [(ngModel)]="weight"
-                                   mode="decimal" [minFractionDigits]="2" [min]="0"
+                                   [(ngModel)]="selectedWeights[order.id]"
+                                   placeholder="Gewicht"
+                                   mode="decimal" [minFractionDigits]="3" [min]="0"
                                    suffix=" kg"></p-inputNumber>
                   </div>
 <!--                  <div class="p-field">-->
@@ -47,8 +71,10 @@
 <!--                    <input id="shipping-product" type="text" pInputText class="p-inputtext-sm">-->
 <!--                  </div>-->
                   <div class="p-field">
-                    <label for="packing">Verpackung</label>
-                    <input id="packing" type="text" pInputText class="p-inputtext-sm">
+<!--                    <label for="packing">Verpackung</label>-->
+<!--                    <input id="packing" type="text" pInputText class="p-inputtext-sm">-->
+                    <p-dropdown [options]="packings" [(ngModel)]="selectedPackings[order.id]"
+                                placeholder="Verpackung" optionLabel="name" [showClear]="true"></p-dropdown>
                   </div>
                 </div>
               </td>

@@ -66,11 +66,11 @@
               <td>{{order.orderIdentifier}}</td>
               <td>{{order.orderDate | date: 'dd.MM.yyyy'}}</td>
 <!--              <td>date2</td>-->
-              <td>Buyer</td>
+              <td>{{order.address}}</td>
               <td>{{order.amount | currency}}</td>
               <td>
                 <div *ngIf="order.orderItem" class="p-grid">
-                  <div class="p-col-12">{{order.orderItem.amount}}x</div>
+                  <div class="p-col-12">{{order.orderItem.quantity}}x</div>
                   <div *ngIf="order.orderItem.image" class="p-col-12">
                     <img [src]="order.orderItem.image" style="width: 100%" />
                   </div>
