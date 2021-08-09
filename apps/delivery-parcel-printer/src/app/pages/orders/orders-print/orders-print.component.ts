@@ -5,6 +5,7 @@ import { Subscription } from "rxjs";
 import { Order, OrdersService, Packing } from "@brainless-development/orders";
 // @ts-ignore
 import { PackingsService } from "@brainless-development/orders";
+import { OrderPrint } from "../../../../../../../libs/orders/src/lib/models/orderPrint";
 
 @Component({
   selector: 'dpp-orders-print',
@@ -15,6 +16,7 @@ export class OrdersPrintComponent implements OnInit, OnDestroy {
 
   subs: Subscription = new Subscription();
 
+  orderPrints: OrderPrint[] = [];
   orders: Order[] = [];
   weight = 0;
   packings: Packing[] = [];
@@ -48,6 +50,10 @@ export class OrdersPrintComponent implements OnInit, OnDestroy {
         this.selectedPackings[order.id] = null;
       }
 
+      for (const order of res) {
+        this.orderPrints.push({ order: order });
+      }
+
       this.orders = res;
     }));
   }
@@ -60,8 +66,8 @@ export class OrdersPrintComponent implements OnInit, OnDestroy {
 
   printLabels(): void {
     console.log('print labels');
-    for (const order of this.orders) {
-      console.log(`${order.id} => ${this.selectedWeights[order.id]} | ${this.selectedPackings[order.id]?.name}`);
+    for (const orderPrint of this.orderPrints) {
+      console.log(`${orderPrint.order.id} => ${orderPrint.weight} | ${orderPrint.packing?.name}`);
     }
   }
 }

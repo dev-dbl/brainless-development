@@ -11,8 +11,8 @@
         </p-toolbar>
       </div>
 
-      <div class="p-col-12">
-        <p-table id="orders-print-table" [value]="orders"
+      <div *ngIf="orderPrints" class="p-col-12">
+        <p-table id="orders-print-table" [value]="orderPrints"
                  class="p-datatable-striped" [rowHover]="true">
           <ng-template pTemplate="header">
             <tr>
@@ -26,41 +26,41 @@
             </tr>
           </ng-template>
 
-          <ng-template pTemplate="body" let-order>
+          <ng-template pTemplate="body" let-orderPrint>
             <tr>
-              <td>{{order.orderIdentifier}}</td>
-              <td>{{order.orderDate | date: 'dd.MM.yyyy'}}</td>
+              <td>{{orderPrint.order.orderIdentifier}}</td>
+              <td>{{orderPrint.order.orderDate | date: 'dd.MM.yyyy'}}</td>
               <!--              <td>date2</td>-->
               <td>
                 <div class="p-text-left">
-                  <div *ngIf="order.address">{{order.address}}</div>
-                  <div *ngIf="order.orderAddress">
-                    <div *ngIf="order.orderAddress.name">{{order.orderAddress.name}}</div>
+                  <div *ngIf="orderPrint.order.address">{{orderPrint.order.address}}</div>
+                  <div *ngIf="orderPrint.order.orderAddress">
+                    <div *ngIf="orderPrint.order.orderAddress.name">{{orderPrint.order.orderAddress.name}}</div>
                     <div>
-                      <span *ngIf="order.orderAddress.addressLine1">{{order.orderAddress.addressLine1}}</span>
-                      <span *ngIf="order.orderAddress.addressLine2">, {{order.orderAddress.addressLine2}}</span>
-                      <span *ngIf="order.orderAddress.addressLine3">, {{order.orderAddress.addressLine3}}</span>
+                      <span *ngIf="orderPrint.order.orderAddress.addressLine1">{{orderPrint.order.orderAddress.addressLine1}}</span>
+                      <span *ngIf="orderPrint.order.orderAddress.addressLine2">, {{orderPrint.order.orderAddress.addressLine2}}</span>
+                      <span *ngIf="orderPrint.order.orderAddress.addressLine3">, {{orderPrint.order.orderAddress.addressLine3}}</span>
                     </div>
                     <div>
-                      <span *ngIf="order.orderAddress.postalCode">{{order.orderAddress.postalCode}}, </span>
-                      <span *ngIf="order.orderAddress.city">{{order.orderAddress.city}}</span>
-                      <span *ngIf="order.orderAddress.district">, {{order.orderAddress.district}}</span>
-                      <span *ngIf="order.orderAddress.stateOrRegion">, {{order.orderAddress.stateOrRegion}}</span>
+                      <span *ngIf="orderPrint.order.orderAddress.postalCode">{{orderPrint.order.orderAddress.postalCode}}, </span>
+                      <span *ngIf="orderPrint.order.orderAddress.city">{{orderPrint.order.orderAddress.city}}</span>
+                      <span *ngIf="orderPrint.order.orderAddress.district">, {{orderPrint.order.orderAddress.district}}</span>
+                      <span *ngIf="orderPrint.order.orderAddress.stateOrRegion">, {{orderPrint.order.orderAddress.stateOrRegion}}</span>
                     </div>
                     <div>
-                      <span *ngIf="order.orderAddress.county">{{order.orderAddress.county}}</span>
-                      <span *ngIf="order.orderAddress.countryCode">, {{order.orderAddress.countryCode}}</span>
+                      <span *ngIf="orderPrint.order.orderAddress.county">{{orderPrint.order.orderAddress.county}}</span>
+                      <span *ngIf="orderPrint.order.orderAddress.countryCode">, {{orderPrint.order.orderAddress.countryCode}}</span>
                     </div>
-                    <div *ngIf="order.orderAddress.phone">{{order.orderAddress.phone}}</div>
+                    <div *ngIf="orderPrint.order.orderAddress.phone">{{orderPrint.order.orderAddress.phone}}</div>
                   </div>
                 </div>
               </td>
-              <td>{{order.amount | currency}}</td>
+              <td>{{orderPrint.order.amount | currency}}</td>
               <td>
                 <div class="p-fluid">
                   <div class="p-field">
                     <p-inputNumber class="p-inputtext-sm" placeholder="Gewicht" mode="decimal"
-                                   [(ngModel)]="selectedWeights[order.id]"
+                                   [(ngModel)]="orderPrint.weight"
                                    [minFractionDigits]="3" [min]="0" suffix=" kg"></p-inputNumber>
                   </div>
 <!--                  <div class="p-field">-->
@@ -69,7 +69,7 @@
 <!--                  </div>-->
                   <div class="p-field">
                     <p-dropdown placeholder="Verpackung" optionLabel="name" [showClear]="true"
-                                [options]="packings" [(ngModel)]="selectedPackings[order.id]"></p-dropdown>
+                                [options]="packings" [(ngModel)]="orderPrint.packing"></p-dropdown>
                   </div>
                 </div>
               </td>
