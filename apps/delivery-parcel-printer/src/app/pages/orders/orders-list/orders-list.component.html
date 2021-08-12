@@ -11,7 +11,7 @@
                           class="p-button-rounded p-button-help"
                           (click)="changeStatus()"
                           [disabled]="!selectedOrders || !selectedOrders.length"></button>
-                  <button pButton pRipple type="button" label="Versandlabel erstellen" icon="pi pi-plus"
+                  <button pButton pRipple type="button" label="Versandlabel erstellen" icon="pi pi-tags"
                           class="p-button-rounded p-button-success"
                           (click)="navigatePrint()"
                           [disabled]="!selectedOrders || !selectedOrders.length || selectedOrders[0].status !== 1"></button>
